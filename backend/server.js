@@ -38,7 +38,10 @@ app.use(helmet())
 
 app.use(
   cors({
-    origin: config.FRONTEND_URL || 'http://localhost:5173',
+    origin: [
+      'http://localhost:5173',
+      'https://citizenai-eight.vercel.app'
+    ],
     credentials: true
   })
 )
