@@ -1,0 +1,229 @@
+/* ───────── NAVBAR ───────── */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(8,13,26,0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  height: 100px;
+}
+
+/* ───────── NAVBAR INNER ───────── */
+.navbar__inner {
+  width: 100%;
+  height: 100%;
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ───────── LOGO ───────── */
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  flex-shrink: 0;
+  transition: opacity 0.15s;
+}
+
+.navbar__logo:hover {
+  opacity: 0.85;
+}
+
+/* BIGGER AUTHENTIC LOGO */
+.navbar__logo-img {
+  height: 95px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* hide old styles */
+.navbar__logo-icon { display: none; }
+.navbar__logo-text { display: none; }
+
+/* ───────── NAV LINKS ───────── */
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navbar__link {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
+  color: #94a3b8;
+  padding: 7px 16px;
+  border-radius: 8px;
+  transition: all 0.15s;
+  text-decoration: none;
+}
+
+.navbar__link:hover {
+  color: #e8f0fe;
+  background: rgba(255,255,255,0.05);
+}
+
+.navbar__link--active {
+  color: #22c55e !important;
+  font-weight: 700;
+}
+
+/* ───────── ACTIONS ───────── */
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ───────── LOGIN BUTTON ───────── */
+.navbar__login-btn {
+  background: rgba(34,197,94,0.1);
+  border: 1.5px solid rgba(34,197,94,0.35);
+  color: #22c55e;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  padding: 10px 24px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.navbar__login-btn:hover {
+  background: rgba(34,197,94,0.18);
+  border-color: #22c55e;
+}
+
+/* ───────── USER INFO ───────── */
+.navbar__user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar__user-avatar {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 15px;
+  color: #fff;
+}
+
+.navbar__user-name {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  color: #e8f0fe;
+}
+
+.navbar__logout-btn {
+  background: rgba(239,68,68,0.1);
+  border: 1px solid rgba(239,68,68,0.25);
+  color: #f87171;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.navbar__logout-btn:hover {
+  background: rgba(239,68,68,0.18);
+  border-color: #f87171;
+}
+
+/* ───────── HAMBURGER ───────── */
+.navbar__hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
+  border-radius: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.navbar__hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #94a3b8;
+  border-radius: 2px;
+  transition: all 0.25s;
+}
+
+/* ───────── MOBILE MENU ───────── */
+.navbar__mobile {
+  background: #0d1526;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding: 12px 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.navbar__mobile-link {
+  font-family: var(--font-display);
+  font-size: 15px;
+  color: #94a3b8;
+  padding: 10px 14px;
+  border-radius: 8px;
+  transition: all 0.15s;
+  text-decoration: none;
+}
+
+.navbar__mobile-link:hover,
+.navbar__mobile-link.active {
+  color: #22c55e;
+  background: rgba(34,197,94,0.08);
+}
+
+/* ───────── RESPONSIVE ───────── */
+@media (max-width: 768px) {
+
+  .navbar__links {
+    display: none;
+  }
+
+  .navbar__hamburger {
+    display: flex;
+  }
+
+  .navbar__logo-img {
+    height: 70px;
+  }
+
+  .navbar__login-btn {
+    font-size: 13px;
+    padding: 7px 14px;
+  }
+}
+/* Hide navbar on login page */
+.navbar:has(~ .main-content .lp) {
+  display: none;
+}
+.navbar__user-avatar--img {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}

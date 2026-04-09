@@ -1,0 +1,328 @@
+/* ══════════════════════════════════════
+   LOGIN PAGE — Full screen, no navbar
+══════════════════════════════════════ */
+
+.lp {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #080d1a;
+  position: relative;
+  overflow: hidden;
+  padding: 40px 20px;
+}
+
+/* ── Animated background ── */
+.lp__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.lp__blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.35;
+  animation: blobFloat 8s ease-in-out infinite;
+}
+.lp__blob--1 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, #22c55e, transparent);
+  top: -100px; left: -100px;
+}
+.lp__blob--2 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, #3b82f6, transparent);
+  bottom: -80px; right: -80px;
+  animation-delay: 3s;
+  animation-name: blobFloat2;
+}
+.lp__blob--3 {
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, #a855f7, transparent);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  animation-delay: 5s;
+  opacity: 0.15;
+}
+
+@keyframes blobFloat {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50%       { transform: translateY(-30px) scale(1.05); }
+}
+@keyframes blobFloat2 {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50%       { transform: translateY(30px) scale(1.08); }
+}
+
+.lp__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(34,197,94,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34,197,94,0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* ── Back button ── */
+.lp__back {
+  position: fixed;
+  top: 24px; left: 24px;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 16px rgba(34,197,94,0.4);
+  font-family: var(--font-display);
+}
+.lp__back:hover {
+  transform: translateX(-3px);
+  box-shadow: 0 6px 24px rgba(34,197,94,0.6);
+}
+
+/* ── Card ── */
+.lp__card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 460px;
+  background: rgba(13,21,38,0.85);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 24px;
+  padding: 40px;
+  backdrop-filter: blur(24px);
+  box-shadow:
+    0 0 0 1px rgba(34,197,94,0.08),
+    0 32px 80px rgba(0,0,0,0.5),
+    0 0 60px rgba(34,197,94,0.06);
+  animation: cardIn 0.5s cubic-bezier(0.16,1,0.3,1) both;
+}
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(32px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.lp__card--success {
+  border-color: rgba(34,197,94,0.4);
+  box-shadow:
+    0 0 0 1px rgba(34,197,94,0.3),
+    0 32px 80px rgba(0,0,0,0.5),
+    0 0 80px rgba(34,197,94,0.2);
+}
+
+/* ── Logo ── */
+.lp__logo {
+  height: 80px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 28px;
+  animation: logoIn 0.6s cubic-bezier(0.16,1,0.3,1) 0.1s both;
+}
+@keyframes logoIn {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Success ── */
+.lp__success {
+  text-align: center;
+  padding: 20px 0;
+  animation: fadeIn 0.4s ease both;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.lp__success-icon {
+  width: 72px; height: 72px;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 32px; color: #fff;
+  margin: 0 auto 20px;
+  box-shadow: 0 0 40px rgba(34,197,94,0.5);
+  animation: successIcon 0.5s cubic-bezier(0.16,1,0.3,1) both;
+}
+@keyframes successIcon {
+  from { transform: scale(0); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+.lp__success-title {
+  font-size: 28px; font-weight: 800; color: #e8f0fe; margin-bottom: 8px;
+}
+.lp__success-sub { color: #64748b; font-size: 15px; }
+
+/* ── Tabs ── */
+.lp__tabs {
+  display: flex;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 4px;
+  margin-bottom: 28px;
+}
+.lp__tab {
+  flex: 1;
+  padding: 10px;
+  border-radius: 9px;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+.lp__tab--active {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #fff !important;
+  box-shadow: 0 2px 16px rgba(34,197,94,0.35);
+}
+
+/* ── Heading ── */
+.lp__title {
+  font-size: 26px; font-weight: 800; color: #e8f0fe; margin-bottom: 6px;
+}
+.lp__sub {
+  font-size: 14px; color: #64748b; margin-bottom: 26px; line-height: 1.6;
+}
+
+/* ── Fields ── */
+.lp__field {
+  display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px;
+}
+.lp__label {
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px;
+  color: #64748b; font-family: var(--font-display);
+}
+.lp__input {
+  background: rgba(255,255,255,0.04);
+  border: 1.5px solid rgba(255,255,255,0.09);
+  border-radius: 10px;
+  color: #e8f0fe;
+  padding: 13px 16px;
+  font-size: 15px;
+  width: 100%;
+  transition: all 0.2s;
+  font-family: var(--font-body, sans-serif);
+}
+.lp__input:focus {
+  border-color: #22c55e;
+  background: rgba(34,197,94,0.04);
+  box-shadow: 0 0 0 3px rgba(34,197,94,0.1);
+  outline: none;
+}
+.lp__input::placeholder { color: #334155; }
+
+/* ── Error ── */
+.lp__error {
+  background: rgba(239,68,68,0.08);
+  border: 1px solid rgba(239,68,68,0.2);
+  border-radius: 10px;
+  padding: 11px 16px;
+  color: #f87171;
+  font-size: 13.5px;
+  margin-bottom: 12px;
+  animation: shake 0.3s ease both;
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25%       { transform: translateX(-6px); }
+  75%       { transform: translateX(6px); }
+}
+
+/* ── Login button ── */
+.lp__btn {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s;
+  margin-top: 8px;
+  box-shadow: 0 4px 24px rgba(34,197,94,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+}
+.lp__btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 36px rgba(34,197,94,0.55);
+}
+.lp__btn:active:not(:disabled) { transform: scale(0.98); }
+.lp__btn:disabled { opacity: 0.7; cursor: not-allowed; }
+
+.lp__spinner {
+  width: 22px; height: 22px;
+  border: 3px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: inline-block;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Divider ── */
+.lp__divider {
+  display: flex; align-items: center; gap: 12px; margin: 20px 0;
+}
+.lp__divider::before,
+.lp__divider::after {
+  content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.07);
+}
+.lp__divider span { color: #334155; font-size: 12px; }
+
+/* ── Google button — clean, no icon ── */
+.lp__google-btn {
+  width: 100%;
+  padding: 13px 20px;
+  background: rgba(255,255,255,0.04);
+  color: #94a3b8;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.lp__google-btn:hover {
+  background: rgba(255,255,255,0.08);
+  color: #e8f0fe;
+  border-color: rgba(255,255,255,0.18);
+}
+
+/* ── Footer note ── */
+.lp__note {
+  text-align: center;
+  font-size: 12px;
+  color: #334155;
+  margin-top: 20px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .lp__card { padding: 28px 20px; }
+  .lp__back { top: 16px; left: 16px; padding: 8px 14px; font-size: 13px; }
+}

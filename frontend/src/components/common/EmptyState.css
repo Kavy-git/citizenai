@@ -1,0 +1,8 @@
+.empty-state {
+  text-align: center;
+  padding: 80px 24px;
+  color: #475569;
+}
+.empty-state__icon { font-size: 48px; margin-bottom: 16px; }
+.empty-state__title { font-size: 20px; margin-bottom: 8px; color: #64748b; }
+.empty-state__message { font-size: 14px; color: #475569; }
